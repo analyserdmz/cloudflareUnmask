@@ -8,7 +8,7 @@ import argparse
 def resolve_domain(domain, server, result_queue):
     resolver = dns.resolver.Resolver(configure=False)
     resolver.nameservers = [str(server)]
-    resolver.lifetime = 1
+    resolver.lifetime = 1  # 1 second timeout
     try:
         answer = resolver.resolve(domain)
         for rdata in answer:
@@ -44,7 +44,6 @@ def main():
     parser = argparse.ArgumentParser(description="DNS resolver that checks a domain against a range of DNS servers specified by a CIDR, potentially unmasking Cloudflare-protected domains.")
     parser.add_argument('--domain', required=True, help="The domain name to resolve.")
     parser.add_argument('--cidr', required=True, help="The CIDR range to generate DNS server IP addresses from.")
-    parser.add_argument('--help', action='help', default=argparse.SUPPRESS, help='Show this help message and exit.')
 
     args = parser.parse_args()
 
