@@ -30,7 +30,7 @@ pip install dnspython
 To run the script, use the following command:
 
 ```sh
-python script.py --domain example.com --cidr 192.168.1.0/24
+python cloudflareUnmask.py --domain example.com --cidr 192.168.1.0/24
 ```
 
 ## Detailed Explanation
